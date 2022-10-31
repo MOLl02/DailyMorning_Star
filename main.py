@@ -6,7 +6,7 @@ from datetime import datetime, date
 from zhdate import ZhDate
 import sys
 import os
-
+from datetime import timedelta
 
 def get_color():
     # 获取随机颜色
@@ -118,6 +118,8 @@ def send_message(to_user, access_token, city_name, weather, max_temperature, min
     month = localtime().tm_mon
     day = localtime().tm_mday
     today = datetime.date(datetime(year=year, month=month, day=day))
+    d = timedelta(days=1)
+    today = today+d
     week = week_list[today.isoweekday() % 7]
     # 获取在一起的日子的日期格式
     love_year = int(config["love_date"].split("-")[0])
